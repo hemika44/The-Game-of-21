@@ -1,6 +1,6 @@
 /*
  * The Game of 21
- * December, 2019
+ * November, 2019
  */
 
 /**
@@ -15,6 +15,8 @@ public class TheGameof21 {
         GameRules (finalPoints);    
     }
     
+    // GameRules(finalPoints) states all of the rules to The Game of 21 for the user and asks
+    //  if they want to proceed to the game.
     public static void GameRules(int finalPoints) throws InterruptedException {
         Scanner input=new Scanner(System.in);
         String begin;
@@ -58,7 +60,8 @@ public class TheGameof21 {
             InvalidStart(finalPoints);
         }
     }
-     
+    
+    // Deal2Cards(finalPoints) presents the user with 2 random cards and sums their current points.
     public static void Deal2Cards(int finalPoints) throws InterruptedException {
         Random rn = new Random();
         int range = 13;
@@ -72,6 +75,8 @@ public class TheGameof21 {
                   
     }
     
+    // InvalidStart(finalPoints) is called if an invalid answer is inputted in GameRules.
+    //  The user is asked to try again to input a valid answer.
     public static void InvalidStart(int finalPoints) throws InterruptedException {
         Scanner input = new Scanner (System.in);
         String tryAgain;
@@ -90,6 +95,8 @@ public class TheGameof21 {
         }               
     }
     
+    // ThirdCard(currentPoints, range, finalPoints) asks if the user would like a third card. 
+    //  If not, it displays the user's final sum of points.
     public static void ThirdCard (int currentPoints, int range, int finalPoints) throws InterruptedException {
         Scanner input = new Scanner (System.in);
         String newCard;
@@ -113,11 +120,15 @@ public class TheGameof21 {
         }               
     }
     
+    // InvalidThirdCard(currentPoints, range, finalPoints) is called if the user inputs an invalid answer
+    //  in ThirdCard. The user is asked to try again to input a valid answer.
     public static void InvalidThirdCard (int currentPoints, int range, int finalPoints) throws InterruptedException {
         System.out.print ("Invalid entry. Please try again. ");
         ThirdCard (currentPoints, range, finalPoints);      
     }
     
+    // Deal2rdCard(currentPoints, range, finalPoints) presents the user a third card if they chose 'yes' in 
+    // ThirdCard. It sums the new total points of the user.
     public static void Deal3rdCard (int currentPoints, int range, int finalPoints) throws InterruptedException {
         Random rn = new Random();
         int card3 =  rn.nextInt(range) + 1; 
@@ -126,6 +137,7 @@ public class TheGameof21 {
         ComputerPoints (range, finalPoints);
     }
     
+    // ComputerPoints(range, finalPoints) randomly presents 2 cards for the computer and sums its points.
     public static void ComputerPoints (int range, int finalPoints) throws InterruptedException {
         Random rn = new Random ();
         int compCard1 =  rn.nextInt(range) + 1; 
@@ -139,6 +151,8 @@ public class TheGameof21 {
         Computer3rdCard(range, compCurrentPoints, finalPoints);
     }
     
+    // Computer3rdCard randomly decides if the computer will receive a third card. If so, it will present a third card.
+    //  The computer's final points are displayed.
     public static void Computer3rdCard (int range, int compCurrentPoints, int finalPoints) throws InterruptedException {
         Random rn = new Random();
         int decisionRange = 2;
@@ -165,6 +179,8 @@ public class TheGameof21 {
         }  
     }
     
+    // Winner(finalPoints, compFinalPoints) displays the final points of user and computer and a winner is announced.
+    //  The user is asked to play again.
     public static void Winner (int finalPoints, int compFinalPoints) throws InterruptedException {
         Scanner input = new Scanner (System.in);
         String again;
@@ -201,7 +217,7 @@ public class TheGameof21 {
             GameRules (finalPoints);
         }
         else if ("N".equals(again)||"n".equals(again)||"No".equals(again)||"no".equals(again)||"NO".equals(again)){
-            System.out.println();
+            System.out.println("Thanks for playing!");
 
         }
         else {
@@ -209,6 +225,8 @@ public class TheGameof21 {
         }               
     }
     
+    // InvalidWinner(finalPoints) is called if an invalid answer is given in Winner(finalPoints, compFinalPoints. 
+    //  The user is asked to try again to input a valid answer.
     public static void InvalidWinner (int finalPoints) throws InterruptedException {
         Scanner input = new Scanner (System.in);
         String tryAgain;
@@ -219,7 +237,7 @@ public class TheGameof21 {
             GameRules(finalPoints);
         }
         else if ("N".equals(tryAgain)||"n".equals(tryAgain)||"No".equals(tryAgain)||"no".equals(tryAgain)||"NO".equals(tryAgain)){
-            System.out.println();
+            System.out.println("Thanks for playing!");
         }
         else {
             InvalidWinner(finalPoints);
